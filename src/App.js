@@ -1,23 +1,47 @@
 import './App.css';
-import Navbar from './components/Navbar';
-import Categorise from './components/Categorise';
-import SlideShow from './components/SlideShow';
-import SubCat from './components/SubCat';
-import Flipcart from './components/Flipcart';
-// @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+import Navbar from './components/HomePanel/Navbar';
+import Categorise from './components/HomePanel/Categorise';
+import SlideShow from './components/HomePanel/SlideShow';
+import HomeCat from './components/HomePanel/Homecat';
+import Footer from './components/HomePanel/Footer';
+import Product__page from './components/ProductPanel/Product__page';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 function App() {
   return (
-    <div className="App" >
-      <Navbar/>
-      <Categorise/>
-      <SlideShow/>
-      <SubCat title="Deals of the Day"/>
-      <SubCat title="Trending Offers"/>
-      <SubCat title="Top Picks On Men's Clothing "/>
-      <Flipcart/>
-      <SubCat title="Top Picks On Men's Clothing "/>
-    </div>
+    <Router>
+      <div className="App" >
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/Product" element={<ProductPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
+
+
+
+function HomePage() {
+  return (<><Categorise /><SlideShow /><HomeCat /></>)
+}
+
+function ProductPage() {
+  return (<><Product__page /> </>)
+}
+
+
+
+
+
+
+
+
+
 
 export default App;

@@ -6,12 +6,15 @@
 
 
 a,
-img {
+img,li {
   text-decoration: none;
   color: inherit;
   border: none;
   outline: none;
+  list-style: none;
+
 }
+
 
 
 .App {

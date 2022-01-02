@@ -1,9 +1,9 @@
 import React from 'react'
-import './Flipcart.css';
+import './Homecat.css';
 
-function HomeCatagory(props) {
+function HomeProductLink(props) {
    return (
-         <div className="cartShow__catagory__cart">
+         <div className="cartShow__catagory__cart" id="homeCatagory">
             <div className="cartShow__catagory__cart__product1">
                <div className="">
                   <a className="cartShow__product__link" href="">
@@ -25,4 +25,4 @@ function HomeCatagory(props) {
    )
 }
 
-export default HomeCatagory
+export default HomeProductLink
