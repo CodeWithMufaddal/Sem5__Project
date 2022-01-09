@@ -2,7 +2,7 @@ const ConnectToMongo = require('./db.js');
 const express = require("express");
 ConnectToMongo()
 const app = express();
-const port = 5500;
+const port = process.env.PORT;
 
 app.use(express.json());
 
@@ -13,7 +13,7 @@ app.get("/", (req, res) => { res.send(req.body); })
 app.use("/api/Product", require("./routes/product.js"));
 
 // ======= UserProfile.js =======
-app.use("/api/userProfile", require("./routes/userProfile.js"));
+// app.use("/api/userProfile", require("./routes/userProfile.js"));
 
 // ======= auth.js =======
 app.use("/api/auth", require("./routes/auth.js"));
