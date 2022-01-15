@@ -2,6 +2,7 @@ const ConnectToMongo = require('./db.js');
 const express = require("express");
 ConnectToMongo()
 const app = express();
+require('dotenv').config({ path: './.env.local' });
 const port = process.env.PORT;
 
 app.use(express.json());

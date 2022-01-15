@@ -1,0 +1,21 @@
+.login {
+   background: #f9ffe5 !important;
+   width: 350px;
+ }
+ 
+ .ordivider {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .ordivider > hr {
+   margin: 10px;
+   width: 200px;
+ }
+ 
+ .FcGoogle{
+    
+ }
+ 
+ 

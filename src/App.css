@@ -4,20 +4,18 @@
   padding: 0;
 }
 
-
 a,
-img,li {
+img,
+li {
   text-decoration: none;
   color: inherit;
   border: none;
   outline: none;
   list-style: none;
-
 }
-
-
 
 .App {
   background-color: #eff1f4;
   min-height: 100vh;
 }
+
