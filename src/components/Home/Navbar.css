@@ -1,23 +1,96 @@
-.navbar {
-   background-color: #f9ffe5;
+.navbar_ {
+   height: 60px;
+   background: #f9ffe5;
+   background: lightgoldenrodyellow;
+   display: flex;
+   align-items: center;
    position: sticky;
    top: 0;
-   z-index: 10;
-}
-.navbar-brand{
-   margin-right: -435px;
+   z-index: 100;
+   
 }
 
-.navbar-brand > img{
-   width: 20%;
-   height: 20%;
-   margin: -30px -10px;
+.navbar__logo {
+   width: 100px;
+   margin: 0 -15px;
 }
 
-.navbar-collapse {
-   flex-grow: 0;
+.navbar__search {
+   display: flex;
+   flex: 1;
+   align-items: center;
+   border-radius: 4px;
 }
 
-.link:hover{
-   color: #fff;
+.navbar__searchInput {
+   border-radius: 4px 0px 0px 4px;
+   height: 40px;
+   padding: 10px;
+   width: 100%;
+   margin: 0;
+   border: none;
+   outline: none;
+}
+.navbar__searchIconDiv {
+   width: 80px;
+   height: 40px;
+
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+
+   border-radius: 0px 4px 4px 0px;
+   padding: 0 5px;
+
+   background: linear-gradient(
+      to left,
+      hsl(84, 100%, 40%),
+      hsl(84, 100%, 42%),
+      hsl(84, 100%, 46%),
+      hsl(84, 100%, 49%),
+      hsl(84, 100%, 54%),
+      hsl(84, 100%, 55%),
+      hsl(84, 100%, 60%),
+      hsl(84, 100%, 63%),
+      hsl(84, 100%, 67%),
+      hsl(84, 100%, 69%),
+      hsl(84, 100%, 73%),
+      hsl(84, 100%, 76%),
+      hsl(84, 100%, 81%),
+      hsl(84, 100%, 82%),
+      hsl(84, 100%, 87%),
+      hsl(84, 100%, 90%),
+      hsl(84, 100%, 93%),
+      hsl(84, 100%, 94%),
+      hsl(84, 100%, 97%),
+      hsl(84, 100%, 99%),
+      hsl(84, 100%, 100%)
+   );
+}
+
+.navbar__searchIcon {
+   color: darkgreen;
+   padding: 3px;
+}
+
+.navbar__header {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.navbar__option {
+   display: flex;
+   flex-direction: column;
+   margin: 0 10px;
+   justify-content: center;
+   color: darkgreen;
+}
+
+.navbar__optionLine1 {
+   font-size: 12px;
+}
+
+.navbar__optionLine2 {
+   font-size: 13px;
+   font-weight: 700;
 }

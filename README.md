@@ -5,7 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
-
+### `npm install`
+   to install all modules
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -68,3 +69,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+hear we will discuss the way of building this app for collage project today is 1-25-2022
+and its too late almost 10 days so i have only 4 days to complate thi project 
+
+ok so lets start with the things
+
+home page is ready 
+login / reg page is ready by today 
+   panding page : 
+                  product detail page     
+                  checkout page
+                  address add page 
+                  stock update page      
+                  payment page
+                  search for product 

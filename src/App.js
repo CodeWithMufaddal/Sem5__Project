@@ -1,59 +1,54 @@
 import './App.css';
 import Navbar from './components/Home/Navbar';
-import Product__page from './components/Product/Product__page';
+import Product from './components/Product/Product';
 import Categorise from './components/Home/Categorise';
-import SlideShow from './components/Home/SlideShow';
-import HomeCat from './components/Home/Homecat';
+import Home from './components/Home/Home';
 import Footer from './components/Home/Footer';
 import Login from './components/Auth/Login';
 import ForgotPass from './components/Auth/ForgotPass';
 import Register from './components/Auth/Register';
 import {
-  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+import Alert from './Context/alert/Alert';
+import ProductDetails from './components/Product/ProductDetails';
+import CheckOut from './components/Product/CheckOut';
 
 
 function App() {
+
   return (
-    <Router>
-      <div className="App" >
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/Product" element={<ProductPage />} />
-          <Route exact path="/login" element={<LoginPage />} />
-          <Route exact path="/ForgotPassword" element={<ForgotPasswordPage />} />
+    <div className="App" >
+      <Alert />
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/Product/:id" element={<ProductPage />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/ForgotPassword" element={<ForgotPass />} />
+        <Route exact path="/register" element={< Register />} />
+        <Route exact path="/productDetail" element={<ProductDetails />} />
+        <Route exact path="/checkout" element={<CheckOut />} />
 
-          <Route exact path="/register" element={<RegisterPage />} />
-
-        </Routes>
-      </div>
-    </Router>
+      </Routes>
+    </div>
   );
 }
 
 
 
 function HomePage() {
-  return (<>  <Navbar /> <Categorise /><SlideShow /><HomeCat /> <Footer /></>)
+  return (<>
+    <Navbar />
+    <Categorise />
+    <Home />
+    <Footer />
+  </>)
 }
 
 function ProductPage() {
-  return (<>  <Navbar /> <Product__page />  <Footer /> </>)
+  return (<>  <Navbar /> <Product />  <Footer /> </>)
 }
 
-function LoginPage() {
-  return (<>  <Navbar /> <Login /> </>)
-}
-
-function ForgotPasswordPage() {
-  return (<>  <Navbar /> <ForgotPass />  </>)
-}
-
-function RegisterPage() {
-
-  return (<>  <Navbar /> < Register />  </>)
-}
 
 export default App;

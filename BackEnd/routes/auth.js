@@ -5,9 +5,11 @@ const fatchuser = require("../middleware/fatchuser");
 const { body, validationResult } = require('express-validator');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET
+const jwtSecret = process.env.REACT_APP_JWT_SECRET
 const router = express.Router();
 dotenv.config();
+let success = false;
+
 
 // Route: 1 Create a User using Post "/api/auth/register" - { No login required }
 router.post('/register', [
@@ -19,14 +21,15 @@ router.post('/register', [
    // Check error by using validationResult
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: "Invelid Credentials" });
    }
-   const { name, email, password } = req.body;
+   const { email, password } = req.body;
    try {
       // Check if user already exists or Not
+
       let user = await User.findOne({ email: email });
       if (user) {
-         return res.status(400).json({ errors: [{ msg: "User already exists" }] });
+         return res.status(400).json({ success, errors: "User already exists" });
       }
 
       // const salt = bcrypt.getSalt(10);
@@ -47,21 +50,13 @@ router.post('/register', [
 
       const token = jwt.sign(payload, jwtSecret)
 
-      res.json({ token })
-
-
-
-
-
-      // Send the user to the frontend
-      // res.json([{ msg: "Account Created Succesfully", user: user }]);
-
+      success = true;
+      res.json({ success, token  });
    } catch (error) {
       console.log(error);
       res.status(500).send("Server Error");
    }
 })
-
 
 
 // Route: 2 LogIn a User using Post "/api/auth/login" - { No login required }
@@ -70,10 +65,11 @@ router.post('/login', [
    body('password').exists(),
 ], async (req, res) => {
 
+
    // Check error by using validationResult
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: "Invalid Credentials" });
    }
 
    const { email, password } = req.body;
@@ -82,23 +78,21 @@ router.post('/login', [
       // Check if user already exist of  not
       let user = await User.findOne({ email });
       if (!user) {
-         return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+         return res.status(400).json({ success, errors: "Invalid Credentials" });
       }
 
       // Check if password is correct
       const passMatch = await bcrypt.compare(password, user.password)
       if (!passMatch) {
-         return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+         return res.status(400).json({ success, errors: "Invalid Credentials" });
       }
 
-      const payload = { user: { id: user.id } }
 
+      const payload = { user: { id: user.id } }
       const token = jwt.sign(payload, jwtSecret);
 
-
-      res.json([{ msg: "Logged In Succesfully", user, token }]);
-
-
+      success = true;
+      res.json({ success, token });
    } catch (error) {
       console.log(error);
       res.status(500).send("Server Error");

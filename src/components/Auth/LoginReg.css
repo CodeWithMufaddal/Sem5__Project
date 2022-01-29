@@ -1,21 +1,112 @@
+.containerr {
+  background: lightgoldenrodyellow;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+  min-width: 100%;
+}
+
+.coverContainer {
+  position: relative;
+  border-radius: 20px;
+  z-index: 25;
+  background: linear-gradient(to bottom, gold, goldenrod);
+
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.coverContainer::before {
+  content: "";
+  position: absolute;
+  top: -250px;
+  left: -37%;
+  width: 100%;
+  height: 135%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28));
+  pointer-events: none;
+  transform: rotate(40deg);
+  filter: blur(4px);
+}
+
+.headlogo {
+  position: relative;
+  width: 140px;
+  height: 120px;
+  bottom: 10px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.1), inset 0 -8px 0 darkgreen;
+  z-index: 1000;
+  background: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --Mpos: -50px;
+  --pos: 50px;
+  --Mbox: -15px;
+  --box: 15px;
+}
+
+.headlogo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--Mpos);
+  width: var(--pos);
+  height: var(--pos);
+  background: transparent;
+  border-top-right-radius: var(--pos);
+  box-shadow: var(--box) var(--Mbox) 0 var(--box) lightgoldenrodyellow;
+}
+
+.headlogo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: var(--Mpos);
+  width: var(--pos);
+  height: var(--pos);
+  background: transparent;
+  border-top-left-radius: var(--pos);
+  box-shadow: var(--Mbox) var(--Mbox) 0 var(--box) lightgoldenrodyellow;
+}
+
+.logo {
+  width: 160px;
+  height: 140px;
+  position: relative;
+}
+
 .login {
-   background: #f9ffe5 !important;
-   width: 350px;
- }
- 
- .ordivider {
-   display: flex;
-   align-items: center;
-   justify-content: center;
- }
- 
- .ordivider > hr {
-   margin: 10px;
-   width: 200px;
- }
- 
- .FcGoogle{
-    
- }
- 
- 
+  width: 100%;
+  /* background: #f9ffe5; */
+  color: darkgreen;
+  font-weight: 500;
+  margin: 20px;
+  padding: 5px;
+}
+
+.ordivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ordivider > hr {
+  margin: 10px;
+  width: 200px;
+}
+
+.btn {
+  color: black;
+}

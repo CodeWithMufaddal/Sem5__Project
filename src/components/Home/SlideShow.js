@@ -1,68 +1,51 @@
 import React, { useState, useEffect, useRef } from 'react'
+const delay = 4000;
 
 
-// const colors = [
-//   "img/adbanner.jpg",
-//   "banner.jpg",
-//   "https://rukminim1.flixcart.com/flap/50/50/image/6123fd918d20b8e8.jpg?q=50",
-//   "https://rukminim1.flixcart.com/flap/50/50/image/ff938f15fd1feb73.jpg?q=50",
-//   "https://rukminim1.flixcart.com/flap/50/50/image/6e68305c3ec80a6c.jpg?q=50"
-// ];
-// const delay = 4000;
+const SlideShow__img = [
+   // "https://m.media-amazon.com/images/I/41k+tk0Cc6L._SX1500_.jpg",
+   // "https://m.media-amazon.com/images/I/618pdE2LxDL._SX3000_.jpg",
+   // "https://m.media-amazon.com/images/I/61l1XuNWaAL._SX3000_.jpg",
+   "https://m.media-amazon.com/images/I/71QuUk6VrwL._SX3000_.jpg"
+];
 
 
-function Slideshow() {
-  // const [index, setIndex] = useState(0);
-  // const timeoutRef = useRef(null);
+function Slideshow(props) {
+   const [index, setIndex] = useState(0);
+   const timeoutRef = useRef(null);
 
-  // function resetTimeout() {
-  //   if (timeoutRef.current) {
-  //     clearTimeout(timeoutRef.current);
+   function resetTimeout() {
+      if (timeoutRef.current) {
+         clearTimeout(timeoutRef.current);
 
-  //   }
-  // }
+      }
+   }
 
-  // useEffect(() => {
-  //   resetTimeout();
-  //   timeoutRef.current = setTimeout(() =>
-  //     setIndex((prevIndex) =>
-  //       prevIndex === colors.length - 1 ? 0 : prevIndex + 1), delay);
-  //   return () => {
-  //     resetTimeout();
-  //   };
-  // }, [index]);
+   useEffect(() => {
+      resetTimeout();
+      timeoutRef.current = setTimeout(() =>
+         setIndex((prevIndex) =>
+            prevIndex === SlideShow__img.length - 1 ? 0 : prevIndex + 1), delay);
+      return () => {
+         resetTimeout();
+      };
+   }, [index]);
 
 
 
 
-  return (
-    <div id="carouselExampleIndicators" className="carousel slide shadow-sm" data-bs-ride="carousel">
-         <div className="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-         </div>
-         <div className="carousel-inner ">
-            <div className="carousel-item active">
-               <img src="https://rukminim1.flixcart.com/flap/50/50/image/6123fd918d20b8e8.jpg?q=50" className="d-block w-100" style={{height: "350px"}}  alt="..."/>
-            </div>
-            <div className="carousel-item">
-               <img src="img/banner.jpg" className="d-block w-100" style={{height: "350px"}}  alt="..."/>
-            </div>
-            <div className="carousel-item">
-               <img src="img/adbanner.jpg" className="d-block w-100"  style={{height: "350px"}} alt="..."/>
-            </div>
-         </div>
-         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-         </button>
-         <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-         </button>
-      </div>
-  );
+   return (
+      <>
+         {
+            SlideShow__img.map((img, index) => {
+               return <img key={index} src={props.imgsrc} className="SlideShow__img" alt="SlideShow Image" />
+            })
+         }
+
+
+      </>
+   );
 }
 
 export default Slideshow
+
