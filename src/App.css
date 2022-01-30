@@ -4,11 +4,10 @@
   padding: 0;
 }
 
-
-
 a,
 img,
-li,p {
+li,
+p {
   text-decoration: none;
   color: inherit;
   border: none;
@@ -24,4 +23,3 @@ li,p {
 a:hover {
   color: black;
 }
-

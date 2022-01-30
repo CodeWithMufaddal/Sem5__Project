@@ -20,7 +20,6 @@ function Footer(props) {
             </div>
 
             <div className="Footer__main container">
-
                <div className="tableContent container">
 
                   <div className="tableContent__inner  ">
@@ -53,14 +52,14 @@ function Footer(props) {
                   <div className="tableContent__inner ">
                      <div className="tableContent__header">
                         SOCIAL</div>
-                     <div className="d-flex">
+                     <div className="d-flex ">
                         <div className="d-flex flex-column mx-1 ">
                            <FacebookIcon className="my-1" sx={{ color: blue[600] }} />
                            <TwitterIcon className="my-1" sx={{ color: blue[300] }} />
                            <YouTubeIcon className="my-1" sx={{ color: red[500] }} />
                            <LinkedInIcon className="my-1" color="primary" />
                         </div>
-                        <div className="">
+                        <div className="d-flex justify-content-around flex-column">
                            <a className="tableContent__main" >
                               FaceBook </a>
                            <a className=" tableContent__main">

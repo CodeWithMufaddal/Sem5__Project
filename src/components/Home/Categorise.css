@@ -21,12 +21,6 @@
    cursor: pointer;
    padding: 1px 0;
 
-
-
-
-
-
-
    text-decoration: none;
    padding: 5px;
    display: flex;
@@ -41,5 +35,5 @@
 .Categorise__list__title {
    font-weight: 500;
    font-family: "Cabin", sans-serif;
-   font-size: 10px;
+   font-size: clamp(100% , calc(1vw + 0.1rem) , calc(1vw + 0.5rem));
 }

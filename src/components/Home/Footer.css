@@ -1,6 +1,8 @@
 .Footer {
    background: #647726;
-   display: noe;
+   position: relative;
+   bottom: 0;
+   width: 100%;
 }
 
 /* ========= Back To Top ========== */
@@ -13,13 +15,6 @@
 }
 
 /* ========= Footer Main ========== */
-.Footer__main {
-   display: flex; 
-    align-items: center; 
-    justify-content: center; 
-   text-align: center;
-}
-
 .tableContent {
    /* flex: 1; */
    display: flex;
@@ -38,27 +33,10 @@
 
 
 
-
-.Footer__logo > img {
-   width: 200px;
-   height: 200px;
-   padding: 0;
-   /* margin: -15px -35px; */
-}
-.Footer__background__logo {
-   position: absolute;
-   width: 110px;
-   height: 110px;
-   z-index: 25;
-   border-radius: 3px;
-   box-shadow: 0 0 5px 2px rgb(0, 0, 0, 0.2);
-}
-
-
-
 .tableContent__header {
    color: white;
    font-size: 14px;
+   font-size: calc(0.7vw + 0.5em);
    text-decoration: underline;
    font-weight: 500;
    margin-bottom: 9px;
@@ -66,14 +44,16 @@
 }
 
 .tableContent__main {
-   line-height: 31.99px;
+   line-height: calc(1vh + 1em);
    word-spacing: 3px;
-   font-size: 14px;
+   font-size: 1vw;
+   font-size: clamp(0.5em , 1vw , 3.2em);
+   font-size: calc(0.7vw + 0.5em);
+
    font-weight: 500;
    color: #fff;
    display: block;
    font-weight: 400;
-   font-size: 12px;
    cursor: pointer;
    text-shadow: 1px 1px 2px pink;
 }
