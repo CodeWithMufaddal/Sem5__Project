@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './Categorise.css'
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-function CategoriseInner(props) {
+function Categorise__inner(props) {
    return (
       <div className={`Categorise__listItem `}>
 
@@ -27,24 +28,24 @@ function Categorise() {
 
          <div className="Categorise__list">
 
-            <CategoriseInner icon={<MenuIcon />} title="All" />
-            <Link to="/login"><CategoriseInner title="Login" /></Link>
-            <Link to="/orderHistory"><CategoriseInner title="Order History" /></Link>
-            <Link to="/productDetail"><CategoriseInner title="product" /></Link>
+            <Categorise__inner icon={<MenuIcon />} title="All" />
+            <Link to="/login"><Categorise__inner title="Login" /></Link>
+            <Link to="/orderHistory"><Categorise__inner title="Order History" /></Link>
+            <Link to="/productDetail"><Categorise__inner title="product" /></Link>
 
-            <CategoriseInner title="Today's Deals" />
-            <CategoriseInner title="New Releases" />
-            <CategoriseInner title="Fresh" />
-            <CategoriseInner title="Sell" />
-            <CategoriseInner title="Health, Household & Personal Care" />
-            <CategoriseInner title="Best Sellers" />
-            <CategoriseInner title="Buy Again" />
-            <CategoriseInner title="Customer Service" />
-            <CategoriseInner title="Browsing History" />
-            <CategoriseInner title="Fashion" />
-            <CategoriseInner title="Coupons" />
-            <CategoriseInner title="Home Improvement" />
-            <CategoriseInner title="Sports, Fitness & Outdoors " />
+            <Categorise__inner title="Today's Deals" />
+            <Categorise__inner title="New Releases" />
+            <Categorise__inner title="Fresh" />
+            <Categorise__inner title="Sell" />
+            <Categorise__inner title="Health, Household & Personal Care" />
+            <Categorise__inner title="Best Sellers" />
+            <Categorise__inner title="Buy Again" />
+            <Categorise__inner title="Customer Service" />
+            <Categorise__inner title="Browsing History" />
+            <Categorise__inner title="Fashion" />
+            <Categorise__inner title="Coupons" />
+            <Categorise__inner title="Home Improvement" />
+            <Categorise__inner title="Sports, Fitness & Outdoors " />
 
          </div>
 

@@ -60,13 +60,13 @@ function Footer(props) {
                            <LinkedInIcon className="my-1" color="primary" />
                         </div>
                         <div className="d-flex justify-content-around flex-column">
-                           <a href="/" className="tableContent__main" >
+                           <a className="tableContent__main" >
                               FaceBook </a>
-                           <a href="/" className=" tableContent__main">
+                           <a className=" tableContent__main">
                               Twitter</a>
-                           <a href="/" className="tableContent__main" >
+                           <a className="tableContent__main" >
                               Youtube</a>
-                           <a href="/" className="tableContent__main" >
+                           <a className="tableContent__main" >
                               LinkedIn</a>
                         </div>
                      </div>

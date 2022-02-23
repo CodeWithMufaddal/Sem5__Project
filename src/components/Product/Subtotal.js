@@ -1,31 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import CurrencyFormat from 'react-currency-format';
 import './Subtotal.css'
-import { getBasketTotal } from "../../Context/reducer";
-import { useStateValue } from "../../Context/StateProvider";
-import { useNavigate } from 'react-router-dom';
-import { AlertContext } from '../../Context/Context';
+import { getBasketTotal } from "../../Context/state/reducer";
+import { useStateValue } from "../../Context/state/StateProvider";
 
 
 const Subtotal = () => {
-   const [{ basket },] = useStateValue();
-   let naviget = useNavigate();
-   let token = localStorage.getItem('token')
-   const { ShowAlert } = useContext(AlertContext);
 
-   const handleProcessToBuy = (e) => {
-      if (token) {
-         console.log(basket)
-         if (basket.length === 0) {
-            return ShowAlert("Empty Basket", "danger", "exclamation-triangle-fill")
-         } else { naviget("/checkout") }
-      } else {
-         naviget("/login")
-      }
 
-   }
+
+
+   const [{ basket }, dispatch] = useStateValue();
+
+
+
 
    return <div className="subtotal">
+
+
+
       <CurrencyFormat
          renderText={(value) => (
             <>
@@ -36,9 +29,6 @@ const Subtotal = () => {
                <small className="subtotal__gift">
                   <input type="checkbox" className="form-check-input" id="exampleCheck1" />This order contains a gift
                </small>
-               <button className="box w-100 mt-2 " type="submit" onClick={handleProcessToBuy}>
-                  Proceed to Buy
-               </button>
             </>
          )}
 
@@ -48,6 +38,10 @@ const Subtotal = () => {
          thousandsSeparator={true}
          prefix={"₹"}
       />
+
+      <button className="box">Proceed to Buy</button>
+
+
    </div>;
 };
 

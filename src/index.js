@@ -1,25 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
-import reducer, { initialState } from "./Context/reducer";
-import { StateProvider } from "./Context/StateProvider";
-import AlertState from './Context/AlertState';
-import ProductState from './Context/ProductState';
-import AddressState from './Context/AddressState';
+import AlertState from './Context/alert/AlertState';
+import reducer, { initialState } from "./Context/state/reducer";
+import { StateProvider } from "./Context/state/StateProvider";
+
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
       <AlertState>
-        <ProductState>
-          <AddressState>
-            <Router>
-              <App />
-            </Router>
-          </AddressState>
-        </ProductState>
+        <Router>
+          <App />
+        </Router>
       </AlertState>
     </StateProvider>
   </React.StrictMode>,

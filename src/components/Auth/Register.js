@@ -1,43 +1,53 @@
-import React, {  useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc';
 import { ImFacebook } from 'react-icons/im';
 import "./Media_LogReg.css"
 import "./LoginReg.css"
-import { AlertContext } from '../../Context/Context';
+import Context from '../../Context/Context';
 
 
 
 
 const Register = () => {
 
-
-
-   const { register, setRegcredential, regcredential, ShowAlert } = useContext(AlertContext)
+   const [credential, setcredential] = useState({ name: "", email: "", password: "" });
    const naviget = useNavigate();
-
+   const context = useContext(Context)
 
    const onChange = (e) => {
-      setRegcredential({ ...regcredential, [e.target.name]: e.target.value })
+      setcredential({ ...credential, [e.target.name]: e.target.value })
    }
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      if (regcredential.name === "" || regcredential.email === "" || regcredential.password === "") {
-         (ShowAlert("Please Fill the Details", "info", "info-fill"))
-      }
-      else {
-         const json = await register();
-         if (json.success) {
-            //redirect
-            localStorage.setItem('token', json.token)
-            naviget("/");
-            window.location.reload();
-            ShowAlert(`${regcredential.name} Your Account Created Succesfully`, "success", "check-circle-fill")
-         } else {
 
+      const response = await fetch('http://localhost:5500/api/auth/register', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({
+            name: credential.name,
+            email: credential.email,
+            password: credential.password
+         })
+      })
+      const json = await response.json();
 
-            (ShowAlert("User Already exists", "warning", "exclamation-triangle-fill"))
+      if (json.success) {
+         //redirect
+         console.log(json.success)
+         localStorage.setItem('token', json.token)
+         naviget(-2);
+         context.ShowAlert(`${credential.name} Your Account Created Succesfully`, "success", "check-circle-fill")
+      } else {
+         if (credential.name === "" || credential.email === "" || credential.password === "") {
+            return (context.ShowAlert("Please Fill the Details", "info", "info-fill"))
+         }
+         else {
+
+            (context.ShowAlert("User Already exists", "warning", "exclamation-triangle-fill"))
 
          }
       }
@@ -62,15 +72,15 @@ const Register = () => {
                   <div className=""> {/* form input fild and btn */}
                      <div className="mb-3 name">
                         <label htmlFor="name" className="form-label">name</label>
-                        <input type="text" id="name" name="name" value={regcredential?.name} placeholder="Enter your username" className="form-control" onChange={onChange} />
+                        <input type="text" id="name" name="name" value={credential.name} placeholder="Enter your username" className="form-control" onChange={onChange} />
                      </div>
                      <div className="mb-3 ">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email </label>
-                        <input type="email" id="email" name="email" value={regcredential?.email} placeholder="Enter your Email" className="form-control" onChange={onChange} aria-describedby="emailHelp" />
+                        <input type="email" id="email" name="email" value={credential.email} placeholder="Enter your Email" className="form-control" onChange={onChange} aria-describedby="emailHelp" />
                      </div>
                      <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" id="password" name="password" value={regcredential?.password} placeholder="Enter your Password" className="form-control" onChange={onChange} minLength={3} />
+                        <input type="password" id="password" name="password" value={credential.password} placeholder="Enter your Password" className="form-control" onChange={onChange} minLength={3} />
                      </div>
 
                      <div className="form-check ">
@@ -91,12 +101,12 @@ const Register = () => {
 
                   <div className="d-flex flex-column  ">
                      <div className="btn-group my-2  ">
-                        <a href="/" className="btn btn-primary active" aria-current="page"><ImFacebook /></a>
-                        <a href="/" className="btn btn-primary px-5 googlefb">Register With Facebook</a>
+                        <a href="#" className="btn btn-primary active" aria-current="page"><ImFacebook /></a>
+                        <a href="#" className="btn btn-primary px-5 googlefb">Register With Facebook</a>
                      </div>
                      <div className="btn-group my-2 ">
-                        <a href="/" className="  btn btn-danger active" aria-current="page"><FcGoogle /></a>
-                        <a href="/" className="btn btn-danger px-5 googlefb ">Register With Google </a>
+                        <a href="#" className="  btn btn-danger active" aria-current="page"><FcGoogle /></a>
+                        <a href="#" className="btn btn-danger px-5 googlefb ">Register With Google </a>
                      </div>
                   </div>
 
