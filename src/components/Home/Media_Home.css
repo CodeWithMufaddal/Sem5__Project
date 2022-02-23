@@ -12,6 +12,11 @@
    .slideshow {
       margin-bottom: -415px;
    }
+
+   .product__img{
+      width: 100px;
+      height: 100px;
+   }
 }
 @media (max-width: 1068px) {
    .slideshow {
@@ -53,9 +58,20 @@
    .slideshow {
       margin-bottom: -545px;
    }
+   .navbar__logo {
+      width: 80px;
+   }
 }
+
 @media (max-width: 268px) {
    .slideshow {
       margin-bottom: -560px;
+   }
+   .product__img{
+      width: 100px;
+      height: 100px;
+   }
+   .navbar__logo {
+      width: 80px;
    }
 }

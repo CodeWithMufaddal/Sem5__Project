@@ -1,51 +1,39 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import "./LoginReg.css"
 import "./Media_LogReg.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc';
 import { ImFacebook } from 'react-icons/im';
-import Context from '../../Context/Context';
+import { AlertContext } from '../../Context/Context';
 
 
 
 const Login = (props) => {
-   const context = useContext(Context)
-   const [credential, setCredential] = useState({ email: "", password: "" });
-   let naviget = useNavigate();
+   const { setCredential, credential, login, ShowAlert } = useContext(AlertContext)
+   const naviget = useNavigate();
+
 
    const onChange = async (e) => {
       setCredential({ ...credential, [e.target.name]: e.target.value })
    }
 
-   const handleSubmit = async (e, res) => {
-      try {
-         let data = { email: credential.email, password: credential.password }
-         e.preventDefault();
-         const response = await fetch("http://localhost:5500/api/auth/login", {
-            method: 'POST',
-            headers: {
-               'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-         })
-         const json = await response.json();
-
-
+   const HandleSubmit = async (e) => {
+      e.preventDefault();
+      if (credential.email === "" || credential.password === "") {
+         (ShowAlert("Please Fill the Details", "info", "info-fill"))
+      } else {
+         const json = await login();
          if (json.success) {
             //redirect
             localStorage.setItem('token', json.token)
-            naviget(-1);
-            context.ShowAlert("Login Successfull", "success", "check-circle-fill")
-         } else {
-            if (credential.email === "" || credential.password === "") {
-               return (context.ShowAlert("Please Fill the Details", "info", "info-fill"))
-            }
-            (context.ShowAlert("Invelid Email or Password", "danger", "exclamation-triangle-fill"))
-         }
+            naviget("/");
+            window.location.reload()
+            ShowAlert("Login Successfull", "success", "check-circle-fill")
 
-      } catch (error) {
-         console.log(error);
-         res.status(500).send("Server Error");
+
+         } else {
+            ShowAlert("Invelid Email or Password", "danger", "exclamation-triangle-fill")
+         }
       }
    }
 
@@ -61,7 +49,7 @@ const Login = (props) => {
             </Link>
 
             <div className="login">
-               <form className="px-2 p-2" onSubmit={handleSubmit} >
+               <form className="px-2 p-2" onSubmit={HandleSubmit} >
                   {/* Input form */}
                   <div className="">
                      <div className="mb-3  Email">
@@ -71,7 +59,7 @@ const Login = (props) => {
 
                      <div className="mb-3 ">
                         <label htmlFor="password" className="form-label"  >Password</label>
-                        <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password" value={credential.password} onChange={onChange}/>
+                        <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password" value={credential.password} onChange={onChange} />
                      </div>
 
                      <div className="form-check d-flex align-center justify-content-between">

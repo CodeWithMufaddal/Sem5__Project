@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
 import "./Product.css"
-import Context from '../../Context/Context';
-import { useStateValue } from "../../Context/state/StateProvider";
+import { AlertContext } from '../../Context/Context';
+import { useStateValue } from "../../Context/StateProvider";
 
-const Product = ({ title, price, description, rating, img }) => {
+const Product = ({ id ,title, price, description, rating, img }) => {
 
-   const context = useContext(Context);
-   const [{ basket }, dispatch] = useStateValue()
+   const { ShowAlert } = useContext(AlertContext);
+   const [, dispatch] = useStateValue()
 
-   const addToBasket = () => {
-      context.ShowAlert("Product added to basket", "success", "check-circle-fill")
+   const addToBasket = (e) => {
+      ShowAlert("Product added to basket", "success", "check-circle-fill")
       // dispatch the item into the data layer
       dispatch({
          type: "ADD_TO_BASKET",
          item: {
+            id: id,
             title: title,
             image: img,
             price: price,
@@ -26,6 +27,7 @@ const Product = ({ title, price, description, rating, img }) => {
 
    return <div className="product">
 
+      {/* <div className="product__container"> */}
 
       <div className="product__info text-start">
          <p className="product__title title">{title.length <= 50 ? title : `${title.slice(0, 50)}...`}</p>
@@ -42,10 +44,12 @@ const Product = ({ title, price, description, rating, img }) => {
       <div className="product__img">
          <img src={img} className="product__image" alt="" />
       </div>
+      <div className="">
+         <button onClick={addToBasket} className="box">Add to Basket</button>
+      </div>
 
-      <button onClick={addToBasket} className="box">Add to Basket</button>
 
-
+      {/* </div>   */}
 
    </div >
 };

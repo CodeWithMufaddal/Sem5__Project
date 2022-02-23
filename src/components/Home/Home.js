@@ -39,7 +39,7 @@ const Home = () => {
                   id="2"
                   title="Juârez Acoustic Guitar, 38 Inch Cutaway, 038C with Bag, Strings, Pick and Strap, Black"
                   img="https://m.media-amazon.com/images/I/71y1TJbygLL._AC_UL480_FMwebp_QL65_.jpg"
-                  price={2,649}
+                  price={2649}
                   rating={4} />
 
                <Product
@@ -77,6 +77,7 @@ const Home = () => {
       </div>
 
       <Footer />
+  
    </>
 
 };

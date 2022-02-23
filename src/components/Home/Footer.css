@@ -25,7 +25,7 @@
 
 .tableContent__inner {
    width: 100%;
-   padding: 10px;
+   /* padding: 10px; */
    display: flex;
    align-items: center;
    flex-direction: column;
@@ -69,13 +69,13 @@
    background: #475c00;
    color: #fff;
    display: flex;
-   /* width: 100vw; */
+   width: 100%;
    margin: auto;
 
    /* justify-content: space-around; */
    /* align-items: center; */
    /* margin-bottom: -1rem; */
-   /* padding: 20px 0px; */
+   padding: 0px;
    /* width: 100%; */
    font-weight: inherit;
    /* font-size: inherit; */
