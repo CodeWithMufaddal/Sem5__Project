@@ -45,7 +45,8 @@ function Slideshow(props) {
       <>
          <div className="slideshow" >
             <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
-               {SlideshowImg.map((SlideshowImg, index) => <img
+               {SlideshowImg.map((SlideshowImg, index) => 
+               <img
                   className="SlideShow__img"
                   key={index}
                   src={SlideshowImg}

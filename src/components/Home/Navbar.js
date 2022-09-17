@@ -8,7 +8,7 @@ import './Navbar.css'
 function Navbar() {
 
    const [{ basket, user }, dispatch] = useStateValue();
-
+   const token = localStorage.getItem('token')
 
    return (
       <>
@@ -29,9 +29,13 @@ function Navbar() {
             <div className="navbar__header">
                <Link to="/login" className="navbar__option d-none d-md-flex ">
                   <span className="navbar__optionLine1 ">Hello,Guest</span>
-                  <span className="navbar__optionLine2 "> Login</span>
+                  <span className="navbar__optionLine2 ">Login</span>
                </Link>
-           
+               {!token ?
+                  <Link to="/login" className="navbar">IS</Link>
+                  :
+                  <Link to="/checkout" className="navbar__option d-none d-md-flex ">This</Link>}
+
                <Link to="/orderhistory" className="navbar__option d-none d-md-flex">
                   <span className="navbar__optionLine1">Return</span>
                   <span className="navbar__optionLine2">& Orders</span>
@@ -40,9 +44,9 @@ function Navbar() {
 
                <div className="navbar__option   m-2">
                   <Link to="/checkout">
-                     <ShoppingCartIcon className="text-secondary  basket " /> <span className="
+                     <ShoppingCartIcon className="text-secondary  basket "/> <span className="
                       navbar__optionLine1 top-0 start-100 translate-middle badge bg-warning p-1">
-                    {basket?.length}
+                        {basket?.length}
                      </span>
                   </Link>
                </div>

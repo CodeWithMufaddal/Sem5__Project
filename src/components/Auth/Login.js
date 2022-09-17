@@ -16,7 +16,6 @@ const Login = (props) => {
    const onChange = async (e) => {
       setCredential({ ...credential, [e.target.name]: e.target.value })
    }
-
    const handleSubmit = async (e, res) => {
       try {
          let data = { email: credential.email, password: credential.password }

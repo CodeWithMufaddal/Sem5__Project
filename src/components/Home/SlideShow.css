@@ -9,11 +9,6 @@
    /* margin-bottom: clamp(calc(-400px + -1vh), -350px, calc(-400px + -1vh)); */
 }
 
-.SlideShow__img {
-   width: 100%;
-   z-index: -1;
-   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-}
 
 .slideshowSlider {
    white-space: nowrap;
@@ -21,3 +16,8 @@
    width: 100%;
    transition: ease 1000ms;
 }
+   .SlideShow__img {
+      width: 100%;
+      z-index: -1;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+   }
